@@ -1,0 +1,124 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:RealtyDB_ClientView"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" 
+        x:Class="RealtyDB_ClientView.MainWindow"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="Авторизация" Height="390.957" Width="731.028" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Name="WINDOOWS" Focusable="True" Icon="Images/logo.ico">
+    <Window.Resources>
+
+        <!--<ObjectDataProvider x:Key="enumTesting" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:ServerResponceToCommand"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ComboBox Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="1" Grid.Column="6" IsEditable="True"
+			Style="{StaticResource forCombobox}" ItemsSource="{Binding Source={StaticResource enumTesting}}"
+                  ItemsSource="{Binding Path=ServerList}"/>-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource Dictionaries/Brushes.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/RealtyDB_ClientView;component/Resource Dictionaries/ControlStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Images/background.jpg" TileMode="Tile"/>
+    </Window.Background>
+    <Grid x:Name="grid" Focusable="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+            <RowDefinition  Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Template="{StaticResource Label_X}"
+			Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"  Grid.RowSpan="1">
+            <Grid>
+                <TextBlock Style="{StaticResource forLabel}" FontSize="20" HorizontalAlignment="Center" 
+					VerticalAlignment="Center" Text="Имя сервера"/>
+            </Grid>
+        </Label>
+        <Label Template="{StaticResource Label_X}"
+			Grid.Row="3" Grid.ColumnSpan="4" Grid.Column="1" >
+            <Grid>
+                <TextBlock Style="{StaticResource forLabel}" FontSize="20" HorizontalAlignment="Center" 
+					VerticalAlignment="Center" Text="Пользователь"/>
+            </Grid>
+        </Label>
+        <Label Template="{StaticResource Label_X}"
+			Grid.Row="5" Grid.ColumnSpan="4" Grid.Column="1">
+            <Grid>
+                <TextBlock Style="{StaticResource forLabel}" FontSize="20" HorizontalAlignment="Center" 
+					VerticalAlignment="Center" Text="Пароль"/>
+                
+            </Grid>
+        </Label>
+
+        <ComboBox x:Name="serverCB" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="1"  Grid.Column="6"
+			ToolTip="Имя машины, на которой запущен сервер." Style="{StaticResource ooo }"
+            ItemsSource="{Binding Path=ServerList}"
+            Text="{Binding Path=SelectedServer, Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+             />
+
+        <ComboBox x:Name="userCB" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="1" Grid.Column="6" 
+			 Style="{StaticResource ooo}" ItemsSource="{Binding Path=UserList}"
+                  Text="{Binding Path=SelectedUser,Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"/>
+
+
+        <Button Grid.ColumnSpan="2" Content="Вход" Grid.Column="6" Foreground="DarkBlue" Grid.Row="7" Grid.RowSpan="1" Click="Authorize" 
+                Style="{StaticResource ButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/button template.jpg" Opacity="0.5"/>
+            </Button.Background>
+        </Button>
+        <CheckBox Grid.Column="6" Grid.Row="8" Margin="5" Grid.ColumnSpan="5" Foreground="Black"
+                  Style="{StaticResource CheckBoxStyle}" Content="Запомнить выбранный сервер"  
+                  ToolTip="При повторном входе вам не придётся заново выбирать сервер" 
+                  IsChecked="{Binding Path=RememberServer, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+        <CheckBox Grid.Column="6" Grid.Row="9" Margin="5" Grid.ColumnSpan="5" x:Name="RU" Foreground="Black"   
+                  Style="{StaticResource CheckBoxStyle}"  Content="Запомнить выбранного пользователя"  
+                  ToolTip="При повторном входе вам не придётся заново выбирать пользователя." 
+                  IsChecked="{Binding Path=RememberUser, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                  />
+        <CheckBox Grid.Column="6" Grid.Row="10"  Name="RP" Grid.ColumnSpan="5" Margin="5" Foreground="Black"
+                  Style="{StaticResource CheckBoxStyle}"  Content="Запомнить мой пароль" 
+                  ToolTip="При повторном входе вам не придётся заново вводить пароль." 
+                  IsEnabled="{Binding ElementName=RU, Path=IsChecked, NotifyOnSourceUpdated=True, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsChecked="{Binding Path=RememberPassword, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+
+
+        <PasswordBox x:Name="UP"  PasswordChar="•" 
+			Grid.Row="5" Grid.ColumnSpan="4" Grid.RowSpan="1" Grid.Column="6" FontSize="20" >
+            <i:Interaction.Behaviors>
+                <local:PasswordBehavior Password="{Binding Path=UserPassword, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" />
+            </i:Interaction.Behaviors>
+        </PasswordBox>
+    </Grid>
+</Window>

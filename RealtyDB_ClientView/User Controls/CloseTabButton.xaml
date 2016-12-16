@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="RealtyDB_ClientView.CloseTabButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="buttonTemplate" TargetType="Button">
+            <Path Data="M0,0 L8,8 M8,0 L0,8" Margin="10,0,0,0" StrokeThickness="3" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Path.Style>
+                    <Style TargetType="{x:Type Path}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter Property="Stroke" Value="LightGray" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" Value="Red" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Path.Style>
+            </Path>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Button Template="{StaticResource buttonTemplate}" Click="OnClick" />
+</UserControl>

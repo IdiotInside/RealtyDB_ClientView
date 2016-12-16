@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:RealtyDB_ClientView">
+
+    <Style  TargetType="{x:Type RepeatButton}">
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Grid Width="12">
+                        <Border Name="Border" Background="Transparent" >
+                            <ContentPresenter Name="ContentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center"
+						    Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+						                  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                        </Border>
+
+
+                        <!--Data="M 3.5,0L 0,7L 7,7L 3.5,0 Z"-->
+                        <!--Data="M18.333333,43.666667 L9.1670006,53.499668 C13.683691,52.96929 17.049034,53.800094 18.833685,56.499668 20.642538,52.693999 23.863353,52.975581 27.167941,53.499668 z"-->
+
+
+                        <Path x:Name="DecreaseArrow" HorizontalAlignment="Center" VerticalAlignment="Center"
+							      Data="M19.333333,25 L9.500334,36.5 14.500334,42.166667 17.833667,38.166412 21.833667,41.833008 27.500821,36.499778 z"
+                              Fill="#FF002382" Stretch="Fill" Margin="0,2.5,0,2.5" >
+                            <Path.Style>
+                                <Style TargetType="Path" >
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="SkyBlue" BlurRadius="15" ShadowDepth="0" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Path.Style>
+                        </Path>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--  Scrollbar Thumbs хуйня за которую держатся и которую можно ебануть вверх/вниз  -->
+    <Style TargetType="Thumb">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Rectangle x:Name="getrekt" Width="10" Height="auto" Opacity="0.75" >
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2460FF" Offset="0"/>
+                                <GradientStop Color="#FF41A7C5" Offset="0.865"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="Horizontal">
+                            <Setter TargetName="getrekt" Property="Width" Value="Auto" />
+                            <Setter TargetName="getrekt" Property="Height" Value="10" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Scrollbar  -->
+
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Stylus.IsFlicksEnabled" Value="True" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="GridRoot"
+					      Width="12" 
+                          Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MaxHeight="18" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition MaxHeight="18"  />
+                        </Grid.RowDefinitions>
+                        <RepeatButton x:Name="DecreaseRepeat" Command="ScrollBar.LineUpCommand"
+						              Foreground="Purple" 
+                                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                                          HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <!--<Path x:Name="DecreaseArrow" HorizontalAlignment="Center" VerticalAlignment="Center"
+							      Data="F1 M 3.5,0L 0,7L 7,7L 3.5,0 Z" Fill="Indigo" />-->
+                        </RepeatButton>
+                        <Track x:Name="PART_Track" Grid.Row="1" Focusable="false" IsDirectionReversed="true">
+                            <Track.Thumb>
+                                <Thumb x:Name="Thumb" />
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Focusable="false" Opacity="0" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Focusable="false" Opacity="0" />
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+                        <RepeatButton x:Name="IncreaseRepeat" Grid.Row="2" Command="ScrollBar.LineDownCommand"
+						              Foreground="{DynamicResource StandardBrush}"  RenderTransformOrigin="0.5,0.5">
+                            <RepeatButton.RenderTransform>
+                                <RotateTransform Angle="180" />
+                            </RepeatButton.RenderTransform>
+                            <!--<Path x:Name="IncreaseArrow" HorizontalAlignment="Center" VerticalAlignment="Center"
+							      Data="F1 M 3.5,7L 7,0L 0,0L 3.5,7 Z " Fill="Indigo" />-->
+                        </RepeatButton>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="SkyBlue" BlurRadius="5" ShadowDepth="0" />
+                                </Setter.Value>
+                            </Setter>
+                            <!--<Setter TargetName="Thumb" Property="Background" Value="{StaticResource HoverBrush}" />-->
+                        </Trigger>
+                        <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Blue" BlurRadius="5" ShadowDepth="0" />
+                                </Setter.Value>
+                            </Setter>
+                            <!--<Setter TargetName="Thumb" Property="Background" Value="{StaticResource StandardBrush}" />-->
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="false">
+                            <!--<Setter TargetName="IncreaseArrow" Property="Fill" Value="Black" />
+                                <Setter TargetName="DecreaseArrow" Property="Fill" Value="Black" />-->
+                            <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Width" Value="Auto" />
+                            <Setter Property="Height" Value="12" />
+                            <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                            <Setter TargetName="DecreaseRepeat" Property="Command" Value="ScrollBar.LineLeftCommand" />
+                            <Setter TargetName="IncreaseRepeat" Property="Command" Value="ScrollBar.LineRightCommand" />
+                            <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                            <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

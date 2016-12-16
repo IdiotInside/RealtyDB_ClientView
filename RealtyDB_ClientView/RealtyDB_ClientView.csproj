@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D5A92D72-11BB-4DE5-9A21-1C1294FB90FC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RealtyDB_ClientView</RootNamespace>
+    <AssemblyName>RealtyDB_ClientView</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="RealtyDB.ClientSide">
+      <HintPath>..\..\..\RealtyDB Library\RealtyDB.ClientSide\bin\Release\RealtyDB.ClientSide.dll</HintPath>
+    </Reference>
+    <Reference Include="RealtyDB.Common">
+      <HintPath>..\..\..\RealtyDB Library\RealtyDB.Common\bin\Release\RealtyDB.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPF_UC_Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Libraries\WPF_UC_Library\WPF_UC_Library\bin\Release\WPF_UC_Library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Business logic\Custom_Validation_Rules.cs" />
+    <Compile Include="Business logic\Custom_Value_Converters.cs" />
+    <Compile Include="Business logic\OtherLogic.cs" />
+    <Compile Include="ClientPresentation.xaml.cs">
+      <DependentUpon>ClientPresentation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\ClosableRefreshableTabItem.cs" />
+    <Compile Include="Custom Controls\ClosableTabItem.cs" />
+    <Compile Include="Custom Controls\ComboboxyDGCHeader.cs" />
+    <Compile Include="Custom Controls\ExtendedComboBox.cs" />
+    <Compile Include="Custom Controls\ExtendedMenuItem.cs" />
+    <Compile Include="Custom Controls\ExtendedTextBlock.cs" />
+    <Compile Include="User Controls\CloseTabButton.xaml.cs">
+      <DependentUpon>CloseTabButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Business logic\Command.cs" />
+    <Compile Include="Custom Controls\CustomControls.cs" />
+    <Compile Include="Custom Controls\CustomDatePicker.cs" />
+    <Compile Include="Custom Controls\ExtendedTabControl.cs" />
+    <Compile Include="Business logic\DG_ViewModel.cs" />
+    <Compile Include="getTable.xaml.cs">
+      <DependentUpon>getTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Controls\PasswordBoxBehaviour.cs" />
+    <Compile Include="User Controls\ListboxInPopup.xaml.cs">
+      <DependentUpon>ListboxInPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\RefreshTabButton.xaml.cs">
+      <DependentUpon>RefreshTabButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Business logic\UndoRedoManager.cs" />
+    <Compile Include="User Controls\ImageHostControl.xaml.cs">
+      <DependentUpon>ImageHostControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\RealtyClient_Agent_rowDetailBlock.xaml.cs">
+      <DependentUpon>RealtyClient_Agent_rowDetailBlock.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resource Dictionaries\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ClientPresentation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource Dictionaries\ClientPresentationStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\CloseTabButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource Dictionaries\ControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource Dictionaries\DataGridStylePack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="getTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="User Controls\ListboxInPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\RefreshTabButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource Dictionaries\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\ImageHostControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\RealtyClient_Agent_rowDetailBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource Dictionaries\ScrollBarStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\button template.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\0_6440e_5cbc21eb_XL.jpg" />
+    <Resource Include="Images\178203_original.jpg" />
+    <Resource Include="Images\3.jpg" />
+    <Resource Include="Images\DSCF1511.JPG" />
+    <Resource Include="Images\naberezhnaya-tyumen.jpg" />
+    <Resource Include="Images\tyumen-vid.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1-home_1813.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu panel template.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\menu panel template 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\popup background template.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\button_cancel.ico" />
+    <Resource Include="Images\button_ok.ico" />
+    <Resource Include="Images\messagebox_warning.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1467679049_refresh-01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Texture-27.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="RealtyDB_ClientView.User_Controls.ImageHostControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RealtyDB_ClientView.User_Controls"
+             mc:Ignorable="d" 
+             >
+    <Grid>
+        <Border ToolTip="Здесь будут фотографии" CornerRadius="3">
+            <Border.Background>
+                <RadialGradientBrush RadiusX="0.65" RadiusY="0.4" GradientOrigin="0.3,0.1">
+                    <GradientStop Color="#FF7796D8" Offset="0"/>
+                    <GradientStop Color="#FFD9FDFF" Offset="1"/>
+                </RadialGradientBrush>
+            </Border.Background>
+            <ScrollViewer ScrollViewer.CanContentScroll="True" ScrollViewer.PanningMode="HorizontalOnly" 
+                                      VirtualizingPanel.CacheLength="5" VirtualizingPanel.IsVirtualizing="True">
+                <StackPanel></StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

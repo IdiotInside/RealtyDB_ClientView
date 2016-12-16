@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="RealtyDB_ClientView.RefreshTabButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="buttonTemplate" TargetType="Button">
+            <Grid>
+                <Border x:Name="Borderino" BorderBrush="Gray" BorderThickness="0" Width="16" Height="16" Margin="15,0,0,0"
+                        VerticalAlignment="Center" HorizontalAlignment="Right" Padding="2" >
+                    <Border.Background>
+                        <ImageBrush ImageSource="/RealtyDB_ClientView;component/Images/1467679049_refresh-01.ico"/>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect x:Name="DSE" Color="White" BlurRadius="0" ShadowDepth="0" />
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="Borderino" Property="BorderThickness" Value="1" />
+                    <Setter TargetName="Borderino" Property="ToolTip" Value="Обновить страницу" />
+                    <Setter Property="Effect" TargetName="Borderino">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="15" Color="White" ShadowDepth="0"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Button Template="{StaticResource buttonTemplate}" Click="OnClick" />
+    </Grid>
+</UserControl>
